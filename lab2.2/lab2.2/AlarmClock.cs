@@ -73,10 +73,38 @@ namespace lab2._2
            }
        }
 
+       public AlarmClock()
+       {
+ 
+       }
+
+       public AlarmClock(int hour, int minute)
+       {
+ 
+       }
+
+       public AlarmClock(int hour, int minute, int alarmHour, int alarmMinute)
+       {
+
+       }
+
+       public bool TickTock
+       {
+           
+       }
+
+       public string ToString
+       {
+        
+       }
 
 
 
-       
+
+
+
+
+
     }
 
 }
