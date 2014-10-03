@@ -23,8 +23,8 @@ namespace lab2._2
 
            set 
            {
-                if (value < 0 || value > 23)
-                    throw new ArgumentException();
+               if (value < 0 || value > 23)
+               { throw new ArgumentException(); }
                 _alarmHour = value;
            }
     }
@@ -38,7 +38,7 @@ namespace lab2._2
             set
             {
                 if (value < 0 || value > 59)
-                    throw new ArgumentException();
+                { throw new ArgumentException(); }
                 _alarmMinute = value;
             }
            
@@ -53,7 +53,7 @@ namespace lab2._2
            set 
            {
                if (value < 0 || value > 23)
-                   throw new ArgumentException();
+               { throw new ArgumentException(); }
                _hour = value;
            }
        }
@@ -68,32 +68,53 @@ namespace lab2._2
            set
            {
                if (value < 0 || value > 59)
-                   throw new ArgumentException();
+               { throw new ArgumentException(); }
                _minute = value;
            }
        }
 
        public AlarmClock()
+           : this(0, 0)
        {
  
        }
 
        public AlarmClock(int hour, int minute)
+           : this(hour, minute, hour, minute)
        {
  
        }
 
        public AlarmClock(int hour, int minute, int alarmHour, int alarmMinute)
        {
-
+           hour = Hour;
+           minute = Minute;
+           alarmHour = AlarmHour;
+           alarmMinute = AlarmMinute;
        }
 
-       public bool TickTock
+       public bool TickTock()
        {
+           _minute++;
+
+           if (_minute > 59)
+         {
+            _minute = 0;
+            _hour++;
+         }
+
+           if (_hour == _alarmHour && _minute == _alarmMinute)
+         {
+             return true;
+         }
            
+           else
+         {
+             return false;
+         }
        }
 
-       public string ToString
+       public string ToString()
        {
         
        }

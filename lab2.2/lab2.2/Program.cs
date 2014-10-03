@@ -8,7 +8,11 @@ namespace lab2._2
     class Program
     {
         static void Main(string[] args)
+
         {
+            AlarmClock Clock = new AlarmClock();
+            
+
         }
     }
 }
