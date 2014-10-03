@@ -45,8 +45,35 @@ namespace lab2._2
     }
        public int Hour
        {
-           
+           get
+           {
+               return _hour;
+           }
+
+           set 
+           {
+               if (value < 0 || value > 23)
+                   throw new ArgumentException();
+               _hour = value;
+           }
        }
+
+       public int Minute
+       {
+           get 
+           {
+               return _minute;
+           }
+
+           set
+           {
+               if (value < 0 || value > 59)
+                   throw new ArgumentException();
+               _minute = value;
+           }
+       }
+
+
 
 
        
