@@ -100,7 +100,7 @@ namespace lab2._2
            if (_minute > 59)
          {
             _minute = 0;
-            _hour++;
+            _hour++; 
          }
 
            if (_hour == _alarmHour && _minute == _alarmMinute)
@@ -116,7 +116,30 @@ namespace lab2._2
 
        public string ToString()
        {
-        
+           StringBuilder Structure = new StringBuilder();
+
+           Structure.AppendFormat("{0}:", _hour);
+           
+           if (_minute < 10)
+           {
+               Structure.AppendFormat("{0} ", _minute);
+           }
+           else
+           {
+               Structure.AppendFormat("{0} ", _minute);
+           }
+
+           Structure.AppendFormat("<{0}:", _alarmHour);
+
+           if (_alarmMinute < 10)
+           {
+               Structure.AppendFormat("0{0}>", _alarmMinute);
+           }
+           else
+           {
+               Structure.AppendFormat("0{0}>", _alarmMinute);
+           }
+           return Structure.ToString();
        }
 
 
