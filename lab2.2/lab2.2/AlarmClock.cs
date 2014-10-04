@@ -97,13 +97,19 @@ namespace lab2._2
        {
            _minute++;
 
-           if (_minute > 59)
+           if (_minute > 59) //ställer om minuterna på 0 om programmet når 59!
          {
             _minute = 0;
             _hour++; 
          }
 
-           if (_hour == _alarmHour && _minute == _alarmMinute)
+           if (_hour > 23) //ställer om timmarna när de når 24!
+         {
+             _hour = 0;
+             //_minute++;
+         }
+
+           if (_hour == _alarmHour && _minute == _alarmMinute) //returnerar rätt när allarmet ska gå igång
          {
              return true;
          }
@@ -118,12 +124,13 @@ namespace lab2._2
        {
            StringBuilder Structure = new StringBuilder();
 
-           Structure.AppendFormat("{0}:", _hour);
+           Structure.AppendFormat("{0,4}:", _hour);
            
            if (_minute < 10)
            {
                Structure.AppendFormat("0{0} ", _minute);
            }
+
            else
            {
                Structure.AppendFormat("{0} ", _minute);
