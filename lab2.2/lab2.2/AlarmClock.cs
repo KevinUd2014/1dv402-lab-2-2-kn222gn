@@ -73,24 +73,24 @@ namespace lab2._2
            }
        }
 
-       public AlarmClock()
+       public AlarmClock() //testas och fungerar med test1 metoden i program.cs
            : this(0, 0)
        {
  
        }
 
        public AlarmClock(int hour, int minute)
-           : this(hour, minute, hour, minute)
+           : this(hour, minute, 0, 0)
        {
  
        }
 
        public AlarmClock(int hour, int minute, int alarmHour, int alarmMinute)
        {
-           hour = Hour;
-           minute = Minute;
-           alarmHour = AlarmHour;
-           alarmMinute = AlarmMinute;
+           _hour = hour;
+           _minute = minute;
+           _alarmHour = alarmHour;
+           _alarmMinute = alarmMinute;
        }
 
        public bool TickTock()
@@ -122,7 +122,7 @@ namespace lab2._2
            
            if (_minute < 10)
            {
-               Structure.AppendFormat("{0} ", _minute);
+               Structure.AppendFormat("0{0} ", _minute);
            }
            else
            {
@@ -137,7 +137,7 @@ namespace lab2._2
            }
            else
            {
-               Structure.AppendFormat("0{0}>", _alarmMinute);
+               Structure.AppendFormat("{0}>", _alarmMinute);
            }
            return Structure.ToString();
        }
