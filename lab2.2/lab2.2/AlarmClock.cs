@@ -24,7 +24,7 @@ namespace lab2._2
            set 
            {
                if (value < 0 || value > 23)
-               { throw new ArgumentException(); }
+               { throw new ArgumentException("The Value is not in a valid range between 0 and 23!"); }
                 _alarmHour = value;
            }
     }
@@ -38,7 +38,7 @@ namespace lab2._2
             set
             {
                 if (value < 0 || value > 59)
-                { throw new ArgumentException(); }
+                { throw new ArgumentException("The Value is not in a valid range between 0 and 59!"); }
                 _alarmMinute = value;
             }
            
@@ -53,7 +53,7 @@ namespace lab2._2
            set 
            {
                if (value < 0 || value > 23)
-               { throw new ArgumentException(); }
+               { throw new ArgumentException("The Value is not in a valid range between 0 and 23!"); }
                _hour = value;
            }
        }
@@ -68,7 +68,7 @@ namespace lab2._2
            set
            {
                if (value < 0 || value > 59)
-               { throw new ArgumentException(); }
+               { throw new ArgumentException("The Value is not in a valid range between 0 and 59!"); }
                _minute = value;
            }
        }
