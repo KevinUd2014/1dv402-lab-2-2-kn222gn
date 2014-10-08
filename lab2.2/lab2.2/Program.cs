@@ -15,7 +15,7 @@ namespace lab2._2
 
             AlarmClock test1 = new AlarmClock();
             ViewTestHeader(HorizontalLine);//Console.WriteLine("TestOne");
-            ViewTestHeader("\nTest1");       //Console.WriteLine("Test of a Constructor!");
+            ViewTestHeader("\nTestOne");       //Console.WriteLine("Test of a Constructor!");
             ViewTestHeader("Test of a Constructor! \n");//Console.Write("\n");
             ViewTestHeader(test1.ToString());//Console.WriteLine(test1.ToString());
             //Console.WriteLine();
@@ -84,28 +84,26 @@ namespace lab2._2
                 ViewErrorMessage(Error4.Message);
             }
 
-            AlarmClock test7 = new AlarmClock();
             ViewTestHeader(HorizontalLine);
             ViewTestHeader("\nTestSeven");
             ViewTestHeader("Testing what will happend if wrong numbers are written as alarm hour and hour \n");
-
             try
             {
-                test7.AlarmHour = 25;
+                AlarmClock WrongTime = new AlarmClock(2333, 0);
             }
-            catch (ArgumentException Error)
+            catch (ArgumentException Wrong)
             {
-                ViewErrorMessage(Error.Message);
+                ViewErrorMessage(Wrong.Message);
             }
-
             try
             {
-                test7.Hour = 40;
+                AlarmClock WrongTime = new AlarmClock(0, 0, -20, 0);
             }
-            catch (ArgumentException Error3)
+            catch (ArgumentException wrong)
             {
-                ViewErrorMessage(Error3.Message);
+                ViewErrorMessage(wrong.Message);
             }
+
 
         }
 
@@ -132,13 +130,13 @@ namespace lab2._2
         {
             Console.BackgroundColor = ConsoleColor.DarkRed;
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine(message);
+            Console.WriteLine(message); //skriver och kopplar meddelandet från classens olika argumentexeption!
             Console.ResetColor();
         }
 
         private static void ViewTestHeader(string header)
         {
-            Console.WriteLine(header);
+            Console.WriteLine(header);//skriver ut det som skrivs i viewtestheader när den blir anropad!
         }
 
 

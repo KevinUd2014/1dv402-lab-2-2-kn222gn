@@ -14,7 +14,7 @@ namespace lab2._2
 
 
 
-        public int AlarmHour
+        public int AlarmHour // denna kollar så att både hour, minute, alarmminute och alarmhour får rätt värden inom tidsförhållanden!
     {
            get 
            {
@@ -24,7 +24,7 @@ namespace lab2._2
            set 
            {
                if (value < 0 || value > 23)
-               { throw new ArgumentException("The Value is not in a valid range between 0 and 23!"); }
+               { throw new ArgumentException("The Value is not in a valid range between 0 and 23!!"); }
                 _alarmHour = value;
            }
     }
@@ -38,7 +38,7 @@ namespace lab2._2
             set
             {
                 if (value < 0 || value > 59)
-                { throw new ArgumentException("The Value is not in a valid range between 0 and 59!"); }
+                { throw new ArgumentException("The Value is not in a valid range between 0 and 59!!"); }
                 _alarmMinute = value;
             }
            
@@ -69,7 +69,7 @@ namespace lab2._2
            {
                if (value < 0 || value > 59)
                { throw new ArgumentException("The Value is not in a valid range between 0 and 59!"); }
-               _minute = value;
+               _minute = value; // skickar med ett argumentexeption med ett felmeddelande!
            }
        }
 
@@ -79,7 +79,7 @@ namespace lab2._2
  
        }
 
-       public AlarmClock(int hour, int minute)
+       public AlarmClock(int hour, int minute) //tar emot 0 0 från föregående och skickar med nya 0 0 till nästkommande!
            : this(hour, minute, 0, 0)
        {
  
@@ -87,44 +87,51 @@ namespace lab2._2
 
        public AlarmClock(int hour, int minute, int alarmHour, int alarmMinute)
        {
-           _hour = hour;
-           _minute = minute;
-           _alarmHour = alarmHour;
-           _alarmMinute = alarmMinute;
+           Hour = hour;
+           Minute = minute;
+           AlarmHour = alarmHour;
+           AlarmMinute = alarmMinute;
        }
 
        public bool TickTock()
        {
-           _minute++;
-
-           if (_minute > 59) //ställer om minuterna på 0 om programmet når 59!
-         {
-            _minute = 0;
-            _hour++; 
-         }
-
-           if (_hour > 23) //ställer om timmarna när de når 24!
-         {
-             _hour = 0;
-             //_minute++;
-         }
-
-           if (_hour == _alarmHour && _minute == _alarmMinute) //returnerar rätt när allarmet ska gå igång
-         {
-             return true;
-         }
            
+           if (Minute < 59) //ställer om minuterna på 0 om programmet når 59!
+           {
+               Minute++;
+           }
            else
-         {
-             return false;
-         }
+           {
+               Minute = 0;
+
+               if (Hour < 23) //ställer om timmarna när de når 24!
+               {
+                   Hour++;
+               }
+               else
+               {
+                   Hour = 0;
+               }
+           }
+
+           return Hour == AlarmHour && Minute == AlarmMinute;
+
+         //  if (_hour == _alarmHour && _minute == _alarmMinute) //returnerar rätt när allarmet ska gå igång
+         //{
+         //    return true;
+         //}
+           
+         //  else
+         //{
+         //    return false;
+         //}
        }
 
-       public string ToString()
+       public string ToString()//vad den här metoden gör är att den sktiver ut tiden så som jag vill att det ska vara när den blir anropad denna "mall" funkar till många olika anrop!
        {
            StringBuilder Structure = new StringBuilder();
 
-           Structure.AppendFormat("{0,4}:", _hour);
+           Structure.AppendFormat("{0,4}:", _hour); //0,4 gör så att numren ser med strukturerade ut!
            
            if (_minute < 10)
            {
